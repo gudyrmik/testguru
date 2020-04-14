@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Entities list: Test, User, TestResult, Question (list), Answer(list)
