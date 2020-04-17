@@ -1,6 +1,8 @@
 class Test < ApplicationRecord
-  def self.testByCategory(category)
-    category_id = Category.find_by(title: category).id
-    Test.where(id: category_id).order('title DESC')
+  belongs_to :category
+  belongs_to :user
+
+  def self.test_by_category(category)
+    Test.joins(:category).where("categories.title = #{category}").order(title: :desc)
   end
 end

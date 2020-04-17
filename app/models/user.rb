@@ -1,12 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :name
-
-  def initialize(name)
-    @name = name
-  end
+  has_many :tests
 
   def testsByLevel(level)
-    user_id = User.select(:id).find_by(name: @name).id
-    Test.where(id: History.select(:test_id).where(user_id: user_id).ids).where(level: level)
+    Test.joins(:user).where("level = #{level} AND user_id = #{id}")
   end
 end
