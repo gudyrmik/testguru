@@ -45,3 +45,8 @@ answers = Answer.create!([
 { body: 'True"', correct: true, question_id: 5 },
 { body: 'False"', correct: false, question_id: 5 }
 ])
+histories = History.create!([
+{ user_id: 1, test_id: 1 },
+{ user_id: 1, test_id: 2 },
+{ user_id: 1, test_id: 4 },
+])
