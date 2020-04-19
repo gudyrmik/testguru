@@ -1,8 +1,6 @@
 class Test < ApplicationRecord
-  belongs_to :category
-  belongs_to :user
-
   def self.test_by_category(category)
-    Test.joins(:category).where("categories.title = #{category}").order(title: :desc)
+    joins("JOIN categories ON categories.id = category_id").where("categories.title = ?", category).order(title: 
+:desc).pluck(:title)
   end
 end
