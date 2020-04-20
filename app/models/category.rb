@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :test
+  has_many :tests ,dependent: :destroy
 end

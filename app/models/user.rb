@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :tests
+  has_many :tests, dependent: :destroy
+  has_many :histories, dependent: :destroy
+  has_many :tests, through: :histories, dependent: :destroy
+
   def tests_by_level(level)
-    Test.joins("JOIN histories ON tests.id = histories.test_id")
+    Test.joins(:histories)
       .where(tests: { level: level }, histories: { user_id: id })
       .uniq
   end
