@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_many :tests, through: :histories, dependent: :destroy
 
-  def tests_by_level(level)
-    created_tests.where({ level: level } )
-  end
+  validates :email, presence: :true,
+                    uniqueness: :true
 end

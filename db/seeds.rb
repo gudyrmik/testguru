@@ -14,9 +14,9 @@ categories = Category.create!([
 { title: 'Misc.' }
 ])
 users = User.create!([
-{ name: 'Vasya', login: 'admin', password: "#{Digest::SHA256.hexdigest('f*ck_wordlists!pwd')}" },
-{ name: 'Krista', login: 'krista', password: "#{Digest::SHA256.hexdigest('123456')}" },
-{ name: 'Bob', login: 'the_boss', password: "#{Digest::SHA256.hexdigest('dg:dtyds34DSD0_aA')}" }
+{ name: 'Vasya', email: 'admin@gmail.com', login: 'admin', password: "#{Digest::SHA256.hexdigest('f*ck_wordlists!pwd')}" },
+{ name: 'Krista', email: 'krista@gmail.com', login: 'krista', password: "#{Digest::SHA256.hexdigest('123456')}" },
+{ name: 'Bob', email: 'bob@gmail.com', login: 'the_boss', password: "#{Digest::SHA256.hexdigest('dg:dtyds34DSD0_aA')}" }
 ])
 tests = Test.create!([
   { title: 'Ruby basic test', level: 0, category: categories[0], user: users[0] }, 

@@ -5,10 +5,14 @@ class Test < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_many :users, through: :histories, dependent: :destroy
 
-  def self.test_by_category(category)
-    joins(:category)
-      .where(categories: { title: category })
-      .order(title: :desc)
-      .pluck(:title)
-  end
+  scope :easy, -> { where(level: 0..1) }
+  scope :medium, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..9) }
+  scope :insane, -> { where(level: 10.. Float::INFINITY) }
+  scope :tests_by_level, -> (level) { where(level: level) }
+  scope :tests_by_category, -> (category) { joins(:category).where(categories: { title: category }) }
+
+  validates :title, presence: :true,
+                    uniqueness: { scope: [ :title, :level ] }
+  validates :level, numericality: { only_integer: :true, greater_than_or_equal_to: 0 }
 end
