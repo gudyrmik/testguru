@@ -5,4 +5,8 @@ class User < ApplicationRecord
 
   validates :email, presence: :true,
                     uniqueness: :true
+
+  def tests_by_level(level)
+    created_tests.where( { level: level } )
+  end
 end
