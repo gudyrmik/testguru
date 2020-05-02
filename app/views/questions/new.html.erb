@@ -1,4 +1,4 @@
-<h3>Add new question</h3>
+<h3><%= question_form_header(nil, 'create')</h3>
 
 <%= render 'form' %>
 <%= link_to 'Back', test_questions_path(params[:test_id]) %>

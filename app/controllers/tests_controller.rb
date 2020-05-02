@@ -1,12 +1,12 @@
 class TestsController < ApplicationController
 
-  before_action :find_all_tests, only: :index
   before_action :find_test, only: [:show, :edit, :update, :destroy]
-  before_action :find_questions, only: :show
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_not_found
 
-  def index; end
+  def index
+    @tests = Test.all
+  end
 
   def show; end
 
@@ -45,19 +45,11 @@ class TestsController < ApplicationController
     params.require(:test).permit(:title, :level, :category_id)
   end
 
-  def find_all_tests
-    @tests = Test.all
-  end
-
   def find_test
     @test = Test.find(params[:id])
   end
 
   def rescue_with_not_found
     render 'shared/_page_not_found'
-  end
-
-  def find_questions
-    @questions = Question.where(test_id: params[:id])
   end
 end
