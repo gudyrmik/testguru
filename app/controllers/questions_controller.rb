@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
 
   before_action :find_question, only: [:show, :destroy, :edit, :update]
+  before_action :find_test, only: [:new, :create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_not_found
 
@@ -8,7 +9,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to tests_path
+    redirect_to @question.test
   end
 
   def new
@@ -16,7 +17,6 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @test = Test.find(params[:test_id])
     @question = @test.questions.new(question_params)
     if @question.save
       redirect_to @question
@@ -47,5 +47,9 @@ class QuestionsController < ApplicationController
 
   def rescue_with_not_found
     render 'shared/_page_not_found'
+  end
+
+  def find_test
+    @test = Test.find(params[:test_id])
   end
 end

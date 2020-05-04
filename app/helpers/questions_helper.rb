@@ -1,10 +1,11 @@
 module QuestionsHelper
-  def question_form_header(question, form_type)
-    case form_type
-    when 'create'
-      return 'Add new question'
-    when 'edit'
-      return "Edit question #{question.body}"
+  
+  def question_form_header(question)
+    if question.persisted?
+      "Edit question #{question.body}"
+    else
+      'Add new question' 
     end
   end
+
 end
