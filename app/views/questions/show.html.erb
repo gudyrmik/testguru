@@ -3,4 +3,12 @@
   <%= @question.body %>
 </p>
 
+<h4>Answers:</h4>
+
+<%= link_to 'New answer', new_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
 <%= link_to 'Back', @question.test %>

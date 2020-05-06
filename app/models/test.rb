@@ -1,9 +1,10 @@
 class Test < ApplicationRecord
+  has_many :test_passages
+  has_many :users, through: :test_passages
   belongs_to :category, optional: true
   belongs_to :user, optional: true
   has_many :questions, dependent: :destroy
   has_many :histories, dependent: :destroy
-  has_many :users, through: :histories, dependent: :destroy
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
