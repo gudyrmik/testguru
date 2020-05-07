@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   has_many :test_passages
-  has_many :users, through: :test_passages
+  has_many :users, through: :test_passages, dependent: :destroy
   belongs_to :category, optional: true
   belongs_to :user, optional: true
   has_many :questions, dependent: :destroy

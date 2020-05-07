@@ -1,3 +1,14 @@
 <h1>
   The <%= @test_passage.test.title %> was completed!
 </h1>
+
+<h2>
+  Your success rate is:
+  <span class="<%= @test_passage.conclusion %>">
+    <%= @test_passage.success_rate %>%
+  </span>
+</h2>
+
+<p>
+  <%= link_to 'Back', tests_path %>
+</p>

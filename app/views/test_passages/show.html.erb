@@ -2,6 +2,10 @@
   Passing the <%= @test_passage.test.title %>
 </h1>
 
+<h2>
+  Question <%= @test_passage.question_number %> from <%= @test_passage.test.questions.count %>.
+</h2>
+
 <b>
   <%= @test_passage.current_question.body %>
 </b>
