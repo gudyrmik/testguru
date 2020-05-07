@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_155757) do
   add_foreign_key "histories", "tests"
   add_foreign_key "histories", "users"
   add_foreign_key "questions", "tests"
-  add_foreign_key "test_passages", "current_questions"
+  add_foreign_key "test_passages", "questions", column: "current_question_id"
   add_foreign_key "test_passages", "tests"
   add_foreign_key "test_passages", "users"
   add_foreign_key "tests", "categories"
