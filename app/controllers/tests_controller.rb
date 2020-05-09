@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_test, only: [:show, :edit, :update, :destroy, :start]
   before_action :find_user, only: :start
 
@@ -56,7 +57,7 @@ class TestsController < ApplicationController
   end
 
   def find_user
-    @user = User.first
+    @user = current_user
   end
 
   def rescue_with_not_found

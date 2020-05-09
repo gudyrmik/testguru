@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <p class="nav user">
+      <% if logged_in? %>
+          Welcome, <b><%= current_user.email %></b><br>
+          <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= link_to 'Register', signup_path %>
+      <% end %>
+    </p>
+
     <%= yield %>
 
     <%= render 'shared/footer' %>
