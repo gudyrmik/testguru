@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :created_tests, dependent: :destroy, foreign_key: 'user_id', class_name: 'Test'
   has_many :histories, dependent: :destroy
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, 
+                    uniqueness: :true
 
   has_secure_password
 

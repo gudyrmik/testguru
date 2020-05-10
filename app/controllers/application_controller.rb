@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    cookies[:init_path] ||= request.path
+    cookies[:init_path] ||= request.path unless logged_in?
     redirect_to login_path, alert: 'Invalid login' unless current_user
   end
 

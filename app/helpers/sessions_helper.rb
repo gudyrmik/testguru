@@ -1,9 +1,7 @@
 module SessionsHelper
 
-  def show_flash
-    if flash[:alert]
-      content_tag :p, flash[:alert], class: 'flash alert'
-    end
+  def show_flash(key)
+    content_tag :p, flash[:"#{key}"], class: "flash #{key}"
   end
 
 end
