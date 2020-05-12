@@ -7,9 +7,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      cookies[:init_path] = root_path if cookies[:init_path].nil?
-      redirect_to cookies[:init_path]
-      cookies[:init_path] = nil
+      redirect_to cookies.delete(:init_path) || root_path
     else
       flash.now[:alert] = 'Entered credentials are not valid'
       render :new
