@@ -5,10 +5,10 @@ class Admin::BaseController < ApplicationController
 
   layout 'admin'
 
-  private
+  private 
 
   def admin_required!
-    redirect_to root_path, alert: 'You\'re not authorized to access this page.' unless current_user.is_a?(Admin)
+    redirect_to root_path, alert: 'You\'re not authorized to access this page.' unless current_user.admin?
   end
 
 end

@@ -1,13 +1,8 @@
 class Admin::TestsController < Admin::BaseController
 
-  before_action :find_test, only: [:show, :edit, :update, :destroy, :start]
+  before_action :find_test, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_not_found
-
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
-  end
 
   def index
     @tests = Test.all
@@ -23,6 +18,7 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = Test.new(test_params)
+    @test.user = current_user if current_user.admin?
 
     if @test.save
       redirect_to admin_test_path(@test)

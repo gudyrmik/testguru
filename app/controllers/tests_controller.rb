@@ -11,7 +11,6 @@ class TestsController < ApplicationController
   end
 
   def index
-    redirect_to admin_tests_path if current_user.is_a?(Admin)
     @tests = Test.all
   end
 
