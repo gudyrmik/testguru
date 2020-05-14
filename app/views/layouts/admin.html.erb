@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Testguru</title>
+    <title>TestGuru Administration panel</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,8 @@
   </head>
 
   <body>
-    <p class="nav user">
-      <% if user_signed_in? %>
-          Welcome, <b><%= "#{current_user.first_name} #{current_user.last_name}" %></b><br>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Register', new_user_registration_path %>
-      <% end %>
-    </p>
+
+    <%= render 'admin/nav' %>
 
     <%= render 'shared/flash' %>
 

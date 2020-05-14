@@ -5,11 +5,7 @@ categories = Category.create!([
 { title: 'CoffeeMaking' },
 { title: 'Misc.' }
 ])
-users = User.create!([
-{ name: 'Vasya', email: 'admin@gmail.com' },
-{ name: 'Krista', email: 'krista@gmail.com' },
-{ name: 'Bob', email: 'bob@gmail.com' }
-])
+users = User.all
 tests = Test.create!([
   { title: 'Ruby basic test', level: 0, category: categories[0], user: users[0] }, 
   { title: 'Ruby advanced test', level: 2, category: categories[0], user: users[0] },
