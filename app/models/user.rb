@@ -24,4 +24,12 @@ class User < ApplicationRecord
     is_a?(Admin)
   end
 
+  def full_name
+    if admin?
+      "#{self.first_name} #{self.last_name}"
+    else
+      email
+    end
+  end
+
 end

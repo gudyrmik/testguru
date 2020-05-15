@@ -5,10 +5,8 @@ class ApplicationController < ActionController::Base
 # работает, но предчуствие что это какая-то муть меня не оставляет и будешь ругаться:).
 # наверняка ж проще можно?
 # пни плз в правильную сторону
-  def after_sign_in_path_for(resource)
-    flash[:notice] = "Hello, #{resource.first_name} #{resource.last_name}!"
-
-    if resource.admin?
+  def after_sign_in_path_for(user)
+    if user.admin?
       admin_tests_path 
     else
       root_path

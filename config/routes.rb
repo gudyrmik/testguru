@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users,
               path: :gurus,
-              path_names: { sign_in: :login, sign_out: :logout }
+              path_names: { sign_in: :login, sign_out: :logout },
+              controllers: { sessions: 'sessions' }
   devise_for :admins, path: :admin
+
 
   resources :tests, only: :index do
     post :start, on: :member
