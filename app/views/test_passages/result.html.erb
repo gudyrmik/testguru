@@ -1,14 +1,12 @@
-<h1>
-  The <%= @test_passage.test.title %> was completed!
-</h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
 <h2>
-  Your success rate is:
+  <%= t('.success_rate') %>:
   <span class="<%= test_passage_conclusion(@test_passage) %>">
     <%= @test_passage.success_rate %>%
   </span>
 </h2>
 
 <p>
-  <%= link_to 'Back', tests_path %>
+  <%= link_to t('.back_link'), tests_path %>
 </p>

@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
-# работает, но предчуствие что это какая-то муть меня не оставляет и будешь ругаться:).
-# наверняка ж проще можно?
-# пни плз в правильную сторону
   def after_sign_in_path_for(user)
     if user.admin?
       admin_tests_path 
@@ -13,10 +11,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    if I18n.locale != I18n.default_locale
+      { lang: I18n.locale }
+    else
+      {}
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+  end
+
+  def set_locale
+    I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
 
 end

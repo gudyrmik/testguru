@@ -1,0 +1,73 @@
+ru:
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+
+  tests:
+    index:
+      header: "Список тестов"
+      title: "Название"
+      level: "Уровень"
+      questions: "Вопросы"
+      actions: "Действия"
+      start_button: "Начать тест"
+
+  test_passages:
+    show:
+      header: "Прохождение %{title}"
+      question_header: "Вопрос %{current_question} из %{total_questions}"
+      next_question_button: "Следующий вопрос"
+    result:
+      header: "Тест %{title} успешно завершен"
+      success_rate: "Успешность"
+      back_link: "Назад"
+
+  shared:
+    errors:
+      header:
+        one: "Обнаружена %{count} ошибка"
+        few: "Обнаружено %{count} ошибки"
+        many: "Обнаружено %{count} ошибок"
+        other: "Обнаружено %{count} ошибки"
+
+  admin:
+    tests:
+      index:
+        header: "Список тестов"
+        title: "Название"
+        level: "Уровень"
+        questions: "Вопросы"
+        actions: "Действия"
+        new_test_link: "Создать тест"
+        delete_link: "Удалить"
+        edit_link: "Редактировать"
+        show_link: "Показать"
+        confirmation: "Вы уверены?"
+      create:
+        success: "Тест был успешно добавлен"
+      new:
+        back_link: "Назад"
+        header: "Создать тест"
+      update:
+        success: "Тест был успешно обновлен"
+      show:
+        title: "Название теста"
+        level: "Уровень"
+        new_question_link: "Добавить вопрос"
+        questions: "Вопросы"
+        body: "Вопрос"
+        actions: "Действия"
+        back_link: "Назад"
+        edit_link: "Редактировать"
+        delete_link: "Удалить"
+      edit:
+        header: "Редактировать %{title}"
+        back_link: "Назад"
