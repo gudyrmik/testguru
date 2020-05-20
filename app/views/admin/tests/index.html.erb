@@ -13,3 +13,19 @@
   </tr>
   <%= render @tests %>
 </table>
+
+<h1><%= t('.gist_header') %></h1>
+<table>
+  <tr>
+    <th><%= t('.gist_question') %></th>
+    <th><%= t('.gist_id') %></th>
+    <th><%= t('.gist_user') %></th>
+  </tr>
+  <% @gists.each do |gist| %>
+    <tr>
+      <th><%= link_to "#{Gist.question(gist).slice(0, 25)}", admin_question_path(Gist.gist_question_path(Gist.question(gist))) %></th>
+      <th><%= link_to "#{gist[:id]}", gist[:html_url] %></th>
+      <th><%= Gist.email %></th>
+    </tr>
+  <% end %>
+</table>

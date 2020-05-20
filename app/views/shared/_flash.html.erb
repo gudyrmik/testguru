@@ -1,5 +1,5 @@
 <% flash.each do |key, message| %>
   <div class="alert <%= flash_key_to_bootstrap_class(key) %>" role="alert">
-    <%= message %>
+    <%= sanitize(message) %>
   </div>
 <% end %>

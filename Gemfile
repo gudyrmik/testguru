@@ -29,7 +29,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Auth
-gem 'devise', '~> 4.0'
+gem 'devise'
+
+# Env.
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Localization
 gem 'rails-i18n'
@@ -38,6 +41,10 @@ gem 'devise-i18n'
 # UI
 gem 'bootstrap'
 gem 'jquery-rails'
+
+# Clients
+gem 'faraday'
+gem 'octokit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

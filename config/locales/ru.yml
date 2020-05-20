@@ -29,6 +29,9 @@ ru:
       header: "Тест %{title} успешно завершен"
       success_rate: "Успешность"
       back_link: "Назад"
+    gist:
+      success: "Gist успешно сохранен!"
+      failure: "Во время сохранения gist произошла ошибка"
 
   shared:
     errors:
@@ -51,6 +54,10 @@ ru:
         edit_link: "Редактировать"
         show_link: "Показать"
         confirmation: "Вы уверены?"
+        gist_header: "Список Gist'ов"
+        gist_question: "Вопрос"
+        gist_id: "Хэш"
+        gist_user: "Пользователь"
       create:
         success: "Тест был успешно добавлен"
       new:

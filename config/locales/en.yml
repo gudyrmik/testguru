@@ -29,6 +29,9 @@ en:
       header: "Test %{title} successfully completed"
       success_rate: "Success rate"
       back_link: "Back"
+    gist:
+      success: "Gist was successfully created!"
+      failure: "An error occured while saving gist"
 
   shared:
     errors:
@@ -49,6 +52,10 @@ en:
         edit_link: "Edit"
         show_link: "Show"
         confirmation: "Are you sure?"
+        gist_header: "Gists list"
+        gist_question: "Question"
+        gist_id: "Hash"
+        gist_user: "User"
       create:
         success: "Test was successfully created"
       new:
