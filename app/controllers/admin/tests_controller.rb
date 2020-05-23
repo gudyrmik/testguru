@@ -6,7 +6,7 @@ class Admin::TestsController < Admin::BaseController
 
   def index
     @tests = Test.all
-    @gists = Gist.all_gists
+    @gists = Gist.where(user: current_user)
   end
 
   def show; end

@@ -1,16 +1,24 @@
 class GistQuestionService
 
-  def initialize(question, client: nil)
+  def initialize(question, client = default_client)
     @question = question
     @test = @question.test
-    @client = client || GitHubClient.new
+    @client = client || GitHubClient.new # а разве не коряво что дефолтный клиент совпадает с тем который мы тут присваиваем?
   end
 
   def call
-    @client.create_gist(gist_params)
+    @result = @client.create_gist(gist_params)
+  end
+
+  def success?
+    @result.nil? || result.empty?
   end
 
   private
+
+  def default_client
+    GitHubClient.new
+  end
 
   def gist_params
     {
