@@ -18,14 +18,15 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    # А зачем нагромождать? или типа потрениться))
-    service = GistQuestionService.new(@test_passage.current_question)
-    service_call = service.call
 
-    unless service_call.success?
-      new_gist = Gist.create!(user: @test_passage.user, question: @test_passage.current_question, gist_url: service_call[:html_url])
-      flash[:notice] = "#{view_context.link_to 'Link', service_call[:url]} #{t('.success')}"
-    else flash[:alert] = t('.failure')
+    service = GistQuestionService.new(@test_passage.current_question)
+    service_call_result = service.call
+
+    unless service.success?(service_call_result)
+      new_gist = Gist.create!(user: @test_passage.user, question: @test_passage.current_question, gist_url: service_call_result[:html_url])
+      flash[:notice] = "#{view_context.link_to 'Link', service_call_result[:url]} #{t('.success')}"
+    else
+      flash[:alert] = t('.failure')
     end
 
     redirect_to @test_passage
