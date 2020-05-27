@@ -5,12 +5,14 @@
     <div class="card-body">
       <table class="table">
         <tr>
-          <thead class="thead-light">
-            <th><%= t('tests.index.title') %></th>
-            <th><%= t('tests.index.level') %></th>
-            <th><%= t('tests.index.questions') %></th>
-            <th><%= t('tests.index.actions') %></th>
-          </thead>
+          <th class="sort-by-title pointer thead-light">
+            <%= t('tests.index.title') %>
+            <%= octicon 'arrow-up', class: 'text-success hide' %>
+            <%= octicon 'arrow-down', class: 'text-success hide' %>
+          </th>
+          <th><%= t('tests.index.level') %></th>
+          <th><%= t('tests.index.questions') %></th>
+          <th><%= t('tests.index.actions') %></th>
         </tr>
         <%= render @tests %>
       </table>

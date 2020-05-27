@@ -41,6 +41,7 @@ gem 'devise-i18n'
 # UI
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'octicons_helper'
 
 # Clients
 gem 'faraday'
