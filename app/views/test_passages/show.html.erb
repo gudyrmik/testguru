@@ -4,6 +4,13 @@
   <%= t('.question_header', current_question: @test_passage.question_number, total_questions: @test_passage.test.questions.count) %>
 </h2>
 
+<h3>
+  <%= content_tag :span, 'Progress',
+                  class: 'test-progress',
+                  data: { current_question: @test_passage.question_number,
+                          total_questions: @test_passage.test.questions.count } %>
+</h3>
+
 <p>
   <b><%= @test_passage.current_question.body %></b>
 </p>

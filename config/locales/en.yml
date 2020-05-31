@@ -75,3 +75,5 @@ en:
       edit:
         header: "Edit %{title}"
         back_link: "Back"
+      form_inline:
+        submit: "OK"

@@ -1,7 +1,8 @@
 <h1><%= t('.header') %></h1>
 
-
 <p><%= link_to t('.new_test_link'), new_admin_test_path %></p>
+
+<%= render 'shared/errors', resource: @test %>
 
 <table class="table">
   <tr>
@@ -24,5 +25,5 @@
     <th><%= t('.gist_id') %></th>
     <th><%= t('.gist_user') %></th>
   </tr>
-  <%= render @gists %>
+  <%= render @gists unless @gists.nil?%>
 </table>

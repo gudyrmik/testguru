@@ -78,3 +78,5 @@ ru:
       edit:
         header: "Редактировать %{title}"
         back_link: "Назад"
+      form_inline:
+        submit: "OK"
