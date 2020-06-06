@@ -1,0 +1,7 @@
+<%= form_with model: @user, url: feedback_index_path, local: true do |form| %>
+
+  <p><%= form.text_field :feedback_content %></p>
+
+  <p><%= form.submit %></p>
+
+<% end %>

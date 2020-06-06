@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     post :start, on: :member
   end
 
+  resources :feedback, only: [:index, :create]
+
   resources :test_passages, only: [:show, :update] do
     member do
       get :result
