@@ -1,6 +1,6 @@
 <%= form_with model: @user, url: feedback_index_path, local: true do |form| %>
-
-  <p><%= form.text_field :feedback_content %></p>
+  <p>Email <%= form.text_field :email %></p>
+  <p>Feedback <%= form.text_field :content, rows: 7, cols: 60%></p>
 
   <p><%= form.submit %></p>
 

@@ -1,8 +1,9 @@
 class FeedbackMailer < ApplicationMailer
 
-  def feedback(user, content)
+  def send_feedback(email, content)
+    @email = email
     @content = content
-    mail to: user.email, subject: 'Feedback'
+    mail to: Admin.first.email, subjecst: 'Feedback'
   end
 
 end
