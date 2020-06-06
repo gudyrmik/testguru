@@ -61,14 +61,14 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "testguru_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'still-everglades-57675.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'mysterious-sea-22657.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.google.com',
     port: 587,
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
-    authentication: 'plain'
+    authentication: 'plain',
     enable_starttls_auto: true
   }
 
