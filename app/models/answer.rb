@@ -4,6 +4,7 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   validate :answers_per_question, on: :create
+  validates :body, presence: true
 
   def answers_per_question
     answers_num = question.answers.count
