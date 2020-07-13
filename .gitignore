@@ -35,5 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-# ENV
-/app/.env
+# Environment (figaro)
+/config/application.yml
