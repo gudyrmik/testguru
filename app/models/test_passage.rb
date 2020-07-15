@@ -22,6 +22,10 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id <= ?', current_question.id).count
   end
 
+  def time_remaining
+    (created_at.to_time + test.duration.minutes - Time.now) / 1.second
+  end
+
   private
 
   def before_validation_set_current_question

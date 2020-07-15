@@ -1,5 +1,7 @@
 <h1><%= t('.header', title: @test_passage.test.title) %></h1>
-
+<% if @test_passage.time_remaining <= 0 %>
+  <h2>Time is over</h2>
+<% end %>
 <h2>
   <%= t('.success_rate') %>:
   <span class="<%= test_passage_conclusion(@test_passage) %>">
@@ -7,6 +9,4 @@
   </span>
 </h2>
 
-<p>
-  <%= link_to t('.back_link'), tests_path %>
-</p>
+<p><%= link_to t('.back_link'), tests_path %></p>

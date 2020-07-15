@@ -25,6 +25,8 @@ en:
       header: "Passing %{title}"
       question_header: "Question %{current_question} from %{total_questions}"
       next_question_button: "Next question"
+      duration: "Duration"
+      duration_unlim: "Unlimited"
     result:
       header: "Test %{title} successfully completed"
       success_rate: "Success rate"
@@ -65,6 +67,8 @@ en:
         success: "Test was successfully updated"
       show:
         title: "Test title"
+        duration: "Duration"
+        duration_unlim: "Unlimited"
         level: "Level"
         new_question_link: "New question"
         questions: "Questions"

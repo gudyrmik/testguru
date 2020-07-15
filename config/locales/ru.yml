@@ -25,6 +25,8 @@ ru:
       header: "Прохождение %{title}"
       question_header: "Вопрос %{current_question} из %{total_questions}"
       next_question_button: "Следующий вопрос"
+      duration: "Длительность"
+      duration_unlim: "Без ограничений"
     result:
       header: "Тест %{title} успешно завершен"
       success_rate: "Успешность"
@@ -67,6 +69,8 @@ ru:
         success: "Тест был успешно обновлен"
       show:
         title: "Название теста"
+        duration: "Длительность"
+        duration_unlim: "Без ограничений"
         level: "Уровень"
         new_question_link: "Добавить вопрос"
         questions: "Вопросы"

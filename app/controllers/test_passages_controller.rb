@@ -8,17 +8,21 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def update
-    @test_passage.accept!(params[:answer_ids])
+    if @test_passage.time_remaining > 0
+      @test_passage.accept!(params[:answer_ids])
+    else
+      redirect_to result_test_passage_path
+      return
+    end
 
     if @test_passage.completed?
       redirect_to result_test_passage_path
     else
-      render :show
+      render :show 
     end
   end
 
   def gist
-
     service = GistQuestionService.new(@test_passage.current_question)
     service_call_result = service.call
 

@@ -6,8 +6,10 @@ class TestsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_not_found
 
   def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
+    if @test.questions.count > 0
+      current_user.tests.push(@test)
+      redirect_to current_user.test_passage(@test)
+    end
   end
 
   def index

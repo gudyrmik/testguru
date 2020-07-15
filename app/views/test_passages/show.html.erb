@@ -11,6 +11,13 @@
                           total_questions: @test_passage.test.questions.count } %>
 </h3>
 
+<h3>
+  <%= content_tag :span, 'Time remaining: ',
+                  class: 'test-time',
+                  data: { time: @test_passage.time_remaining,
+                          result: result_test_passage_path(@test_passage) } %>
+</h3>
+
 <p>
   <b><%= @test_passage.current_question.body %></b>
 </p>
