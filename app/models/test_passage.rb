@@ -9,7 +9,8 @@ class TestPassage < ApplicationRecord
     if time_remaining > 0
       self.correct_questions += 1 if correct_answer?(answer_ids)
       save!
-    else self.current_question = nil
+    else
+      self.current_question = nil
     end
   end
 
