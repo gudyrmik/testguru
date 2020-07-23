@@ -1,0 +1,10 @@
+<tr>
+  <td><%= badge.title %></td>
+  <td><%= badge.type %></td>
+  <td>
+    <%= link_to 'Delete',
+        admin_badge_path(badge),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>
