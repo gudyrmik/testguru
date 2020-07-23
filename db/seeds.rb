@@ -32,8 +32,8 @@ answers = Answer.create!([
 { body: 'True"', correct: true, question: questions[4] },
 { body: 'False"', correct: false, question: questions[4] }
 ])
-#histories = History.create!([
-#{ user: users[0], test: tests[0] },
-#{ user: users[0], test: tests[3] },
-#{ user: users[0], test: tests[4] },
-#])
+badge_types = BadgeType.create!([
+{ title: 'Hard tests piercer' },
+{ title: '1st attempt achievement' },
+{ title: 'Entire category achievement' }
+])
