@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         resources :answers, shallow: :true, except: :index
       end
     end
+    resources :badges, only: [:index, :create, :new, :destroy]
   end
   
 end

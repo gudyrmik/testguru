@@ -1,0 +1,16 @@
+<h1>Badges List:</h1>
+
+<p>
+  <%= link_to 'New badge', new_admin_badge_path %> | 
+  <%= link_to 'To Tests', admin_tests_path %>
+</p>
+
+<%= render 'shared/errors', resource: @badge %>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Type</th>
+  </tr>
+  <%= render @badges %>
+</table>
