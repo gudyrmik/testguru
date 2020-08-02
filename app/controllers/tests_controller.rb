@@ -2,6 +2,7 @@ class TestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_test, only: :start
+  before_action :find_badges, only: :index
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_not_found
 
@@ -24,5 +25,9 @@ class TestsController < ApplicationController
 
   def rescue_with_not_found
     render 'shared/_page_not_found'
+  end
+
+  def find_badges
+    @badges = current_user.badges
   end
 end

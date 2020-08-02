@@ -5,7 +5,10 @@ class TestPassagesController < ApplicationController
 
   def show; end
 
-  def result; end
+  def result
+    @test_passage.save! # saves only completed test attempts
+    @test_passage.assign_badges
+  end
 
   def update
     @test_passage.accept!(params[:answer_ids])
