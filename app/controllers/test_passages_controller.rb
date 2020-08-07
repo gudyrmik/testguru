@@ -8,7 +8,7 @@ class TestPassagesController < ApplicationController
 
   def result
     @test_passage.save! # saves only completed test attempts
-    @badge_service.assign_badges
+    current_user.badges << @badge_service.satisfied_badges
   end
 
   def update

@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+
+    attributes:
+      badge:
+        rule_hard_tests: "Hard tests piercer"
+        rule_ruby_category: "Ruby category"
+        rule_first_attempt: "1st attempt"

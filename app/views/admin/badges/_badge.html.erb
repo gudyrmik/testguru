@@ -1,6 +1,9 @@
 <tr>
   <td><%= badge.title %></td>
-  <td><%= badge.rule %></td>
+  <td><%= BadgeService.rules[badge.rule.to_i].first %></td>
+  <td>
+    <%= link_to 'Edit', edit_admin_badge_path(badge) %>
+  </td>
   <td>
     <%= link_to 'Delete',
         admin_badge_path(badge),

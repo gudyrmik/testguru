@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+
+    attributes:
+      badge:
+        rule_hard_tests: "Жесткие тесты"
+        rule_ruby_category: "Категория Руби"
+        rule_first_attempt: "С 1й попытки"
