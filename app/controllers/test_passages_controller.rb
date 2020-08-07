@@ -2,12 +2,13 @@ class TestPassagesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_test_passage, only: [:show, :update, :result, :gist]
+  before_action :set_badge_service, only: :result
 
   def show; end
 
   def result
     @test_passage.save! # saves only completed test attempts
-    @test_passage.assign_badges
+    @badge_service.assign_badges
   end
 
   def update
@@ -38,5 +39,9 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+  end
+
+  def set_badge_service
+    @badge_service = BadgeService.new(@test_passage)
   end
 end

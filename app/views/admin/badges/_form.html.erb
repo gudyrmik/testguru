@@ -8,13 +8,13 @@
 </p>
 
 <p>
-  <%= form.label :image %><br>
-  <%= form.text_field :image, id: :image %>
+  <%= form.label :image_url %><br>
+  <%= form.text_field :image_url, id: :image %>
 </p>
 
 <p>
   <%= form.label :badge_type_id %>
-  <%= form.collection_select :badge_type_id, BadgeType.all, :id, :title, prompt: true %>
+  <%= form.collection_select :rule, BadgeService.rules, :to_s, :to_s, prompt: true %>
 </p>
 
 <p><%= form.submit %></p>

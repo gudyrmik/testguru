@@ -32,8 +32,3 @@ answers = Answer.create!([
 { body: 'True"', correct: true, question: questions[4] },
 { body: 'False"', correct: false, question: questions[4] }
 ])
-badge_types = BadgeType.create!([
-{ title: 'Hard tests piercer' },
-{ title: '1st attempt achievement' },
-{ title: 'Entire category achievement' }
-])

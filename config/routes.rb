@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges, only: [:create, :destroy, :index, :new]
+    
     resources :tests do
       patch :update_inline, on: :member
 
@@ -30,7 +32,6 @@ Rails.application.routes.draw do
         resources :answers, shallow: :true, except: :index
       end
     end
-    resources :badges, only: [:index, :create, :new, :destroy]
   end
   
 end

@@ -1,8 +1,4 @@
 class Badge < ApplicationRecord
-  belongs_to :user
-  belongs_to :badge_type
-
-  def type
-    self.badge_type.title
-  end
+  has_many :badges_users
+  has_many :users, through: :badges_users
 end
