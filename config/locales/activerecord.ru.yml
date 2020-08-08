@@ -4,6 +4,6 @@ ru:
 
     attributes:
       badge:
-        rule_hard_tests: "Жесткие тесты"
-        rule_ruby_category: "Категория Руби"
-        rule_first_attempt: "С 1й попытки"
+        rule_level: "Ачивка уровня"
+        rule_category: "Ачивка категории"
+        rule_attempt: "Ачивка попытки"

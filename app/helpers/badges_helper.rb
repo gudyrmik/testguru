@@ -1,5 +1,5 @@
 module BadgesHelper
-  def localize_rule(rule)
-    Badge.human_attribute_name(rule)
+  def localize_rule_subject(rule_subject)
+    Badge.human_attribute_name(rule_subject)
   end
 end

@@ -13,8 +13,13 @@
 </p>
 
 <p>
-  <%= form.label :badge_rule %>
-  <%= form.select :rule, BadgeService.rules { |rule| [ rule[1] ] } %>
+  <%= form.label :badge_rule_subject %>
+  <%= form.select :rule_subject, BadgeService.rule_subjects.map { |rule_subject| [ApplicationController.helpers.localize_rule_subject(rule_subject[0]), rule_subject[1]] } %>
+</p>
+
+<p>
+  <%= form.label :badge_rule_objective %><br>
+  <%= form.text_field :rule_objective, id: :rule_objective %>
 </p>
 
 <p><%= form.submit %></p>

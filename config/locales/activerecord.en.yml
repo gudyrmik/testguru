@@ -4,6 +4,6 @@ en:
 
     attributes:
       badge:
-        rule_hard_tests: "Hard tests piercer"
-        rule_ruby_category: "Ruby category"
-        rule_first_attempt: "1st attempt"
+        rule_level: "Level achievement"
+        rule_category: "Category achievement"
+        rule_attempt: "Attempt achievement"
