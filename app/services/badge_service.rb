@@ -13,21 +13,22 @@ class BadgeService
 
   def satisfied_badges
     Badge.select do |badge|
-      send("check_#{RULE_SUBJECTS[badge.rule_subject.to_i]}?")
+      send("check_#{RULE_SUBJECTS[badge.rule_subject.to_i]}?", badge)
     end
   end
 
   private
 
-  def check_rule_level?
-    TestPassage.where(user_id: @test_passage.user.id).pluck(:test_id) == Test.where("level > ?", @test_passage.test.level).ids
+  def check_rule_level?(badge)
+    TestPassage.where(user_id: @test_passage.user.id).pluck(:test_id) == Test.where("level > ?", badge.rule_objective.to_i).ids
   end
 
-  def check_rule_attempt?
-    TestPassage.where("user_id = ? AND test_id = ?", @test_passage.user.id, @test_passage.test.id).count == 1
+  def check_rule_attempt?(badge)
+    TestPassage.where("user_id = ? AND test_id = ?", @test_passage.user.id, @test_passage.test.id).count == badge.rule_objective.to_i
   end
 
-  def check_rule_category?
-    TestPassage.where("user_id = ?", @test_passage.user.id).pluck(:test_id) == Test.where("category_id = ?", @test_passage.test.category_id).ids
+  def check_rule_category?(badge)
+    category = Category.find_by("title = ?", badge.rule_objective.to_s)
+    TestPassage.where("user_id = ?", @test_passage.user.id).pluck(:test_id) == Test.where("category_id = ?", category.id).ids unless category.nil?
   end
 end
