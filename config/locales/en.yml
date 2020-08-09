@@ -20,6 +20,12 @@ en:
       actions: "Actions"
       start_button: "Start test"
 
+  badges:
+    rules:
+      rule_level: "Level achievement"
+      rule_category: "Category achievement"
+      rule_attempt: "Attempt achievement"
+      
   test_passages:
     show:
       header: "Passing %{title}"

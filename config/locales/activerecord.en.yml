@@ -1,9 +1,0 @@
-en:
-  activerecord:
-    models:
-
-    attributes:
-      badge:
-        rule_level: "Level achievement"
-        rule_category: "Category achievement"
-        rule_attempt: "Attempt achievement"

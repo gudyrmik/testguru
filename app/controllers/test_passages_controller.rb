@@ -7,7 +7,7 @@ class TestPassagesController < ApplicationController
   def show; end
 
   def result
-    @test_passage.save! # saves only completed test attempts
+    @test_passage.save! # saves all completed test attempts
     current_user.badges << @badge_service.satisfied_badges
   end
 

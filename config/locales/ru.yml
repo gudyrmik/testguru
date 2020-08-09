@@ -20,6 +20,12 @@ ru:
       actions: "Действия"
       start_button: "Начать тест"
 
+  badges:
+    rules:
+      rule_level: "Ачивка уровня"
+      rule_category: "Ачивка категории"
+      rule_attempt: "Ачивка попытки"
+
   test_passages:
     show:
       header: "Прохождение %{title}"

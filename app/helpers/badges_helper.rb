@@ -1,5 +1,5 @@
 module BadgesHelper
-  def localize_rule_subject(rule_subject)
-    Badge.human_attribute_name(rule_subject)
+  def badges_rules
+    BadgeService::RULE_SUBJECTS.map { |rule_subject| [t("badges.rules.#{rule_subject}"), rule_subject] }
   end
 end

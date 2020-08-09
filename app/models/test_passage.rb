@@ -6,6 +6,7 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_current_question
 
   def accept!(answer_ids)
+    ## add success rate
     if time_remaining > 0
       self.correct_questions += 1 if correct_answer?(answer_ids)
       save!
@@ -19,7 +20,9 @@ class TestPassage < ApplicationRecord
   end
 
   def success_rate
-    self.correct_questions.fdiv(test.questions.count) * 100
+    rate = self.correct_questions.fdiv(test.questions.count) * 100
+    self.successful = true if rate > 85
+    rate
   end
 
   def question_number

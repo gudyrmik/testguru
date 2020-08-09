@@ -1,6 +1,6 @@
 <tr>
   <td><%= badge.title %></td>
-  <td><%= localize_rule_subject(BadgeService.rule_subjects[badge.rule_subject.to_i].first) %></td>
+  <td><%= t("badges.rules.#{badge.rule_subject}") %></td>
   <td><%= badge.rule_objective %></td>
   <td>
     <%= link_to 'Edit', edit_admin_badge_path(badge) %>

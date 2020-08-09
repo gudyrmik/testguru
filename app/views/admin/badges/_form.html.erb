@@ -4,22 +4,22 @@
 
 <p>
   <%= form.label :title %><br>
-  <%= form.text_field :title, id: :title %>
+  <%= form.text_field :title %>
 </p>
 
 <p>
   <%= form.label :image_url %><br>
-  <%= form.text_field :image_url, id: :image %>
+  <%= form.text_field :image_url %>
 </p>
 
 <p>
   <%= form.label :badge_rule_subject %>
-  <%= form.select :rule_subject, BadgeService.rule_subjects.map { |rule_subject| [ApplicationController.helpers.localize_rule_subject(rule_subject[0]), rule_subject[1]] } %>
+  <%= form.select :rule_subject, badges_rules %>
 </p>
 
 <p>
   <%= form.label :badge_rule_objective %><br>
-  <%= form.text_field :rule_objective, id: :rule_objective %>
+  <%= form.text_field :rule_objective %>
 </p>
 
 <p><%= form.submit %></p>

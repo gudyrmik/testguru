@@ -1,9 +1,0 @@
-ru:
-  activerecord:
-    models:
-
-    attributes:
-      badge:
-        rule_level: "Ачивка уровня"
-        rule_category: "Ачивка категории"
-        rule_attempt: "Ачивка попытки"
