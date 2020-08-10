@@ -9,6 +9,7 @@ class TestPassage < ApplicationRecord
     ## add success rate
     if time_remaining > 0
       self.correct_questions += 1 if correct_answer?(answer_ids)
+      self.successful = true if success_rate > 85
       save!
     else
       self.current_question = nil
@@ -20,9 +21,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success_rate
-    rate = self.correct_questions.fdiv(test.questions.count) * 100
-    self.successful = true if rate > 85
-    rate
+    self.correct_questions.fdiv(test.questions.count) * 100
   end
 
   def question_number
