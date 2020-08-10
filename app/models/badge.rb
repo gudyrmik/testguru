@@ -3,12 +3,9 @@ class Badge < ApplicationRecord
   has_many :users, through: :badges_users, dependent: :destroy
 
   validates :title, :image_url, presence: :true
-  validates_uniqueness_of :title, scope: [:rule_subject, :rule_objective]
-  validate :rule_service_integrity, on: :create
 
-  def rule_service_integrity
-    unless BadgeService::RULE_SUBJECTS.include?(self.rule_subject.to_sym)
-      errors.add(:rule_unknown, message: "Badge service doesn't recognize given rule subject: #{self.rule_subject}")
-    end
-  end
+  # ради того чтобы работала вот эта валидация я сделал константу BadgeService::RULE_SUBJECTS[] строками вместо символов
+  # потому как из badge_params приходит хэш с строками. вопрос - как по человечески сделать, ну чтобы с символами работало?
+  # приходит на ум тут в валидации { in: BadgeService::RULE_SUBJECTS.map(&:to_s) } но чую это не правильно
+  validates :rule_subject, uniqueness: { scope: :rule_objective }, inclusion: { in: BadgeService::RULE_SUBJECTS, message: "Badge service doesn't recognize given rule subject." }
 end

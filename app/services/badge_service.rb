@@ -1,5 +1,5 @@
 class BadgeService
-  RULE_SUBJECTS = [:rule_level, :rule_category, :rule_attempt]
+  RULE_SUBJECTS = ["rule_level", "rule_category", "rule_attempt"]
 
   def initialize(test_passage)
     @user = test_passage.user
@@ -16,44 +16,35 @@ class BadgeService
 
   def check_rule_level?(badge)
     objective_level = badge.rule_objective.to_i
-    if objective_level == @test_passage.test.level
-      applicable_est_passages = filter_test_passages(badge)
-      if applicable_test_passages.pluck(:test_id).uniq == Test.where("level = ?", objective_level).ids
-        applicable_test_passages.badge_assigned = badge.rule_subject
-        applicable_test_passages.save!
-        true
-      else
-        false
-      end
-    end
+    return false unless objective_level == @test_passage.test.level
+    
+    last_badge_created_at = find_last_badge_time(badge.rule_subject)
+    applicable_test_passages = find_test_passages(last_badge_created_at)
+    applicable_test_passages.pluck(:test_id).uniq == Test.where("level = ?", objective_level).ids
   end
 
   def check_rule_attempt?(badge)
-    applicable_test_passages = filter_test_passages(badge)
-    if applicable_test_passages.pluck(:test_id).count == badge.rule_objective.to_i
-      applicable_test_passages.badge_assigned = badge.rule_subject
-      applicable_test_passages.save!
-      true
-    else
-      false
-    end
+    last_badge_created_at = find_last_badge_time(badge.rule_subject)
+    applicable_test_passages = find_test_passages(last_badge_created_at)
+    applicable_test_passages.pluck(:test_id).count == badge.rule_objective.to_i
   end
 
   def check_rule_category?(badge)
     category = Category.find_by("title = ?", badge.rule_objective.to_s)
-    if !category.nil? && @test_passage.test.category_id == category.id
-      applicable_test_passages = filter_test_passages(badge)
-      if applicable_test_passages.pluck(:test_id) == Test.where("category_id = ?", category.id).ids
-        applicable_test_passages.badge_assigned = badge.rule_subject
-        applicable_test_passages.save!
-        true
-      else
-        false
-      end
-    end
+    return false if category.nil? || @test_passage.test.category_id != category.id
+
+    last_badge_created_at = find_last_badge_time(badge.rule_subject)
+    applicable_test_passages = find_test_passages(last_badge_created_at)
+    applicable_test_passages.pluck(:test_id) == Test.where("category_id = ?", category.id).ids
   end
 
-  def filter_test_passages(badge)
-    @user.test_passages.where("successful = ? AND badge_assigned != ?", true, badge.rule_subject)
+  def find_test_passages(creation_time)
+    @user.test_passages.where("successful = ? AND created_at > ?", true, creation_time)
+  end
+
+  def find_last_badge_time(rule_subject)
+    badge = @user.badges.where(rule_subject: rule_subject).order(:created_at).last
+    return Time.now if badge.nil?
+    badge.created_at
   end
 end

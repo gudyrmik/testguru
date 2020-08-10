@@ -6,10 +6,9 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_current_question
 
   def accept!(answer_ids)
-    ## add success rate
     if time_remaining > 0
       self.correct_questions += 1 if correct_answer?(answer_ids)
-      self.successful = true if success_rate > 85
+      self.successful = true if successful?
       save!
     else
       self.current_question = nil
@@ -18,6 +17,10 @@ class TestPassage < ApplicationRecord
 
   def completed?
     self.current_question.nil?
+  end
+
+  def successful?
+    success_rate >= 85
   end
 
   def success_rate
