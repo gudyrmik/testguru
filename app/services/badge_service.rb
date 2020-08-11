@@ -43,8 +43,8 @@ class BadgeService
   end
 
   def find_last_badge_time(rule_subject)
-    badge = @user.badges.where(rule_subject: rule_subject).order(:created_at).last
+    badge = @user.badges.where(rule_subject: rule_subject)
     return Time.new(0) if badge.nil?
-    @user.badges_users.find_by(badge_id: badge.id).created_at
+    @user.badges_users.where(badge_id: badge.id).order(:created_at).last.created_at
   end
 end
