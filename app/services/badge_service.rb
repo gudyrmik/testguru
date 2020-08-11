@@ -1,5 +1,5 @@
 class BadgeService
-  RULE_SUBJECTS = ["rule_level", "rule_category", "rule_attempt"]
+  RULE_SUBJECTS = %w[rule_level rule_category rule_attempt].freeze
 
   def initialize(test_passage)
     @user = test_passage.user
@@ -44,7 +44,7 @@ class BadgeService
 
   def find_last_badge_time(rule_subject)
     badge = @user.badges.where(rule_subject: rule_subject).order(:created_at).last
-    return Time.now if badge.nil?
-    badge.created_at
+    return Time.new(0) if badge.nil?
+    @user.badges_users.find_by(badge_id: badge.id).created_at
   end
 end
